@@ -1,26 +1,86 @@
-# Express Boilerplate!
+# Not Our Backyard
 
-This is a boilerplate project used for starting new projects!
+Not Our Backyard is built as a place for people to come together and help clean up their communities.  The overview allows people to see how much garbage has been cleaned up different places around the world. Anyone can create an account and start tracking the garbage that they clean up. Let's all work together to make the world a cleaner place.
 
-## Set up
+## Live Demo
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+[Not Our Backyard](https://notourbackyard.now.sh/)
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+*Site currently hosted on free teir.  If there is no data please reload  as database is starting back up*
 
-## Scripts
+##  API Endpoints
 
-Start the application `npm start`
+### /api/cleanups
 
-Start nodemon for the application `npm run dev`
+**GET** 
+cleanups for a specified user id *protected endpoint*
+`/id`
 
-Run the tests `npm test`
+**POST** 
+Add new cleanup for specified user id *protected endpoint*
+`/id`
+The following data is required from the form
+Location,
+user name,
+type of trash,
+quantity
 
-## Deploying
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.# express-boilerplate
+### /api/overview
+
+**GET** 
+Gets data for existing cleanups *Public*
+`/country`
+Retrieve cleanup data for a specific country or the world
+
+`/country/region`
+Retrieve cleanup data for a specific country and region
+
+### /api/auth
+**POST**
+`/login`
+Send login data to retrieve JWT on succesfull authentication
+
+
+### /api/users
+**POST**
+`/`
+Add a new user to the database. The following data is required from the form
+Name,
+password,
+email,
+home country
+
+**GET**
+`/type`
+Get the garbage types from the database
+
+
+## Preview
+
+### Overview
+![overview page](https://i.imgur.com/Az7wQmZ.png "Overview Page")
+
+### Signup  Page
+![signup  page](https://i.imgur.com/yfCNXd5.png "Signup Page")
+
+### Login Page
+![login page](https://i.imgur.com/DpkE4Uc.png "Login Page")
+
+### Cleanup Page
+![cleanup page](https://i.imgur.com/FAtzUnr.png "Cleanup Page")
+
+### Add Cleanup Page
+![new cleanup page](https://i.imgur.com/I4vh4fO.png "New Cleanup Page")
+
+## Built With
+* This application uses the following technology
++ HTML
++ CSS
++ React
++ Jest
++ Chai/Mocha
++ Express
++ PostgreSQL
++ Knex
+
