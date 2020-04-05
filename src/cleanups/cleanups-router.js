@@ -21,7 +21,6 @@ cleanupsRouter
     .post(requireAuth, jsonBodyParser, (req, res, next) => {
         const { country, region, type_of_trash, quantity } = req.body
         const newCleanup = { country, region, type_of_trash, quantity}
-        let RegionId = ''
          
         for (const [key, value] of Object.entries(newCleanup))
             if (value == null)
