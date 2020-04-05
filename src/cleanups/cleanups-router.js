@@ -22,18 +22,18 @@ cleanupsRouter
         const { country, region, type_of_trash, quantity } = req.body
         const newCleanup = { country, region, type_of_trash, quantity}
         let RegionId = ''
-
+         
         for (const [key, value] of Object.entries(newCleanup))
             if (value == null)
                 return res.status(400).json({
                 error: `Missing '${key}' in request body`
                 })
-        
+        // For addition of cleanups we need to first check if the country is in the DB since we need country ID
         UsersService.hasCountryWithCountryName(
             req.app.get('db'),
             country
         )
-        
+        // If it does not exist we add the provided country and region then the cleanup
         .then(hasCountryWithCountryName => {
             if (!hasCountryWithCountryName)  {
                 return UsersService.insertCountry(
@@ -72,6 +72,7 @@ cleanupsRouter
                 )
                 .catch(next)
             } else {
+                // If the country existed we get the ID and check if region exists
                 UsersService.getCountryId(
                     req.app.get('db'),
                     country
@@ -83,6 +84,7 @@ cleanupsRouter
                         countryId.id
                     )
                     .then(hasRegionWithRegionName => {
+                        // Check if region exists if not add it then the cleanup
                         if (!hasRegionWithRegionName) {
                             UsersService.insertRegion(
                                 req.app.get('db'),

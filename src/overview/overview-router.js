@@ -7,6 +7,7 @@ const overviewRouter = express.Router();
 
 overviewRouter
     .route('/:country')
+    // Get either the top countries, the world, or user specified countries
     .get((req, res, next) => {
         if(req.params.country === 'World') {
             const knexInstance = req.app.get('db')

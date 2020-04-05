@@ -18,10 +18,16 @@ app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
 app.use(cors());
 app.use(helmet());
 
-
+// Deals with adding and getting user cleanups
 app.use('/api/cleanups', cleanupsRouter);
+
+// Deals with getting data for the public overview page
 app.use('/api/overview', overviewRouter);
+
+// Deals with auth and addition of users
 app.use('/api/auth', authRouter);
+
+// Gets user information and garbage types
 app.use('/api/users', usersRouter);
 
 app.use(function errorHandler(error, req, res, next) {

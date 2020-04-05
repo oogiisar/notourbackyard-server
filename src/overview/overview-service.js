@@ -1,9 +1,11 @@
 const OverviewService = {
+    // All cleanups from around the world
     getWorld(db) {
         return db
             .sum('quantity')
             .from('cleanups')
     },
+    // Only the top 5  countries from around the world
     getTop(db) {
         return db
             .select('country_name')
@@ -34,6 +36,7 @@ const OverviewService = {
             .andWhere('region_name', '=', region)
             .groupBy('country_name')
     },
+    // These are the user entered cleanups in their account
     getCleanups(db, user_id) {
       return db
         .select(

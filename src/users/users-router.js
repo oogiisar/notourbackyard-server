@@ -17,7 +17,7 @@ usersRouter
     const passwordError = UsersService.validatePassword(password)
     if (passwordError)
         return res.status(400).json({ error: passwordError })
-        
+    // Make sure the country exists in the database if it does not we need to add it    
     UsersService.hasCountryWithCountryName(
         req.app.get('db'),
         home_country
@@ -29,7 +29,7 @@ usersRouter
                 req.app.get('db'),
                 home_country
             )
-    
+        // after adding the country above we add the user
         .then(UsersService.hasUserWithUserName(
             req.app.get('db'),
             email
@@ -72,6 +72,7 @@ usersRouter
             .catch(next)
         )
     } else {
+        // The country already existed so we just add the user
         UsersService.hasUserWithUserName(
             req.app.get('db'),
             email
