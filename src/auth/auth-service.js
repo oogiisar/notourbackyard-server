@@ -1,6 +1,6 @@
 require('dotenv').config();
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const AuthService = {
     getUserWithUserName(db, email) {
@@ -32,4 +32,4 @@ const AuthService = {
     },
   }
   
-  module.exports = AuthService
+  module.exports = AuthService;

@@ -62,6 +62,6 @@ const OverviewService = {
             .then(([region_name]) => region_name)
     }
 
-}
+};
 
 module.exports = OverviewService;

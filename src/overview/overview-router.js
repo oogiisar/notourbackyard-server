@@ -2,8 +2,7 @@ const express = require('express');
 const path = require('path');
 const OverviewService = require('./overview-service');
 
-const overviewRouter = express.Router()
-const jsonBodyParser = express.json()
+const overviewRouter = express.Router();
 
 
 overviewRouter

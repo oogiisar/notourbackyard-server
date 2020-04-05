@@ -6,23 +6,23 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const cleanupsRouter = require('./cleanups/cleanups-router');
 const overviewRouter = require('./overview/overview-router');
-const authRouter = require('./auth/auth-router')
+const authRouter = require('./auth/auth-router');
 const usersRouter = require('./users/users-router');
 
 const app = express();
 
 app.use(morgan((NODE_ENV === 'production') ? 'tiny' : 'common', {
   skip: () => NODE_ENV === 'test',
-}))
+}));
 
-app.use(cors())
-app.use(helmet())
+app.use(cors());
+app.use(helmet());
 
 
-app.use('/api/cleanups', cleanupsRouter)
-app.use('/api/overview', overviewRouter)
-app.use('/api/auth', authRouter)
-app.use('/api/users', usersRouter)
+app.use('/api/cleanups', cleanupsRouter);
+app.use('/api/overview', overviewRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', usersRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response
@@ -33,6 +33,6 @@ app.use(function errorHandler(error, req, res, next) {
     response = { error: error.message, object: error }
   }
   res.status(500).json(response)
-})
+});
 
-module.exports = app
+module.exports = app;

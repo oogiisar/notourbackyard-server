@@ -27,6 +27,6 @@ const CleanupsService = {
             .then(([region_name]) => region_name)
     }
 
-}
+};
 
-module.exports = CleanupsService
+module.exports = CleanupsService;

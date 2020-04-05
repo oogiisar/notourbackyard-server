@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
-const UsersService = require('../users/users-service')
+const UsersService = require('../users/users-service');
 const CleanupsService = require('./cleanups-service');
 const { requireAuth } = require('../middleware/jwt-auth');
 
-const cleanupsRouter = express.Router()
-const jsonBodyParser = express.json()
+const cleanupsRouter = express.Router();
+const jsonBodyParser = express.json();
 
 
 cleanupsRouter

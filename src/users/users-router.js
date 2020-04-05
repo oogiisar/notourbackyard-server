@@ -1,9 +1,9 @@
-const express = require('express')
-const path = require('path')
-const UsersService = require('./users-service')
+const express = require('express');
+const path = require('path');
+const UsersService = require('./users-service');
 
-const usersRouter = express.Router()
-const jsonBodyParser = express.json()
+const usersRouter = express.Router();
+const jsonBodyParser = express.json();
 
 usersRouter
   .post('/', jsonBodyParser, (req, res, next) => {
@@ -113,7 +113,7 @@ usersRouter
             })
             .catch(next)
     }})
-})
+});
 
 usersRouter
     .route('/type')
@@ -123,6 +123,6 @@ usersRouter
             .then(types  => {
                 res.status(200).json(types)
             })
-    })
+    });
 
-module.exports = usersRouter
+module.exports = usersRouter;
